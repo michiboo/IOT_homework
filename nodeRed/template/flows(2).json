@@ -1,0 +1,202 @@
+[
+    {
+        "id": "f6f2187d.f17ca8",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "3cc11d24.ff01a2",
+        "type": "comment",
+        "z": "f6f2187d.f17ca8",
+        "name": "WARNING: please check you have started this container with a volume that is mounted to /data\\n otherwise any flow changes are lost when you redeploy or upgrade the container\\n (e.g. upgrade to a more recent node-red docker image).\\n  If you are using named volumes you can ignore this warning.\\n Double click or see info side panel to learn how to start Node-RED in Docker to save your work",
+        "info": "\nTo start docker with a bind mount volume (-v option), for example:\n\n```\ndocker run -it -p 1880:1880 -v /home/user/node_red_data:/data --name mynodered nodered/node-red\n```\n\nwhere `/home/user/node_red_data` is a directory on your host machine where you want to store your flows.\n\nIf you do not do this then you can experiment and redploy flows, but if you restart or upgrade the container the flows will be disconnected and lost. \n\nThey will still exist in a hidden data volume, which can be recovered using standard docker techniques, but that is much more complex than just starting with a named volume as described above.",
+        "x": 350,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "5667710564a13f9e",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "realTimeValue",
+        "func": "// Create a Date object from the payload\n// msg.payload = {Time: new Date(), radiation: msg.payload, Tab: 'area1'}\n// Return the message so it can be sent on\nreturn {value:Number(msg.payload).toFixed(2)}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 380,
+        "wires": [
+            [
+                "9263fabc9311fa84"
+            ]
+        ]
+    },
+    {
+        "id": "ab56583fb3e6341c",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "radiation/R1",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "bced5e52960f97b7",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 310,
+        "y": 380,
+        "wires": [
+            [
+                "5667710564a13f9e",
+                "d3ea3902c503fbc0"
+            ]
+        ]
+    },
+    {
+        "id": "9263fabc9311fa84",
+        "type": "ui_gauge",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "group": "c8997e9f7256500c",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "R1/Gauge",
+        "label": "Becquerel",
+        "format": "{{value}}",
+        "min": "50",
+        "max": "300",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 830,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "106998151a27a2d9",
+        "type": "influxdb out",
+        "z": "f6f2187d.f17ca8",
+        "influxdb": "47a2116899f21e91",
+        "name": "radiation_store",
+        "measurement": "Becquerel",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "radiation",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "1",
+        "bucket": "radiation",
+        "x": 840,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "4ba95e8ba4128388",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 830,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "d3ea3902c503fbc0",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "func": "msg.payload = Number(msg.payload)\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 500,
+        "wires": [
+            [
+                "106998151a27a2d9",
+                "4ba95e8ba4128388"
+            ]
+        ]
+    },
+    {
+        "id": "bced5e52960f97b7",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "172.17.0.4",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "c8997e9f7256500c",
+        "type": "ui_group",
+        "name": "area1",
+        "tab": "a4f1c021f20101bf",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "47a2116899f21e91",
+        "type": "influxdb",
+        "hostname": "172.17.0.5",
+        "port": "8086",
+        "protocol": "http",
+        "database": "database",
+        "name": "influxdb_store",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "http://172.17.0.5:8086",
+        "rejectUnauthorized": false
+    },
+    {
+        "id": "a4f1c021f20101bf",
+        "type": "ui_tab",
+        "name": "Radiation sensors",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
