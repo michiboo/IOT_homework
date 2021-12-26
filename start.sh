@@ -10,3 +10,5 @@ sudo docker exec mynodered bash -c "cd /usr/src/node-red;npm install node-red-co
 sudo docker run -p 8086:8086 \
       -v $PWD:/var/lib/influxdb2 \
       influxdb:2.0 
+
+sudo docker run -d --name=grafana -p 3000:3000 grafana/grafana
