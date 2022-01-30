@@ -1,6 +1,6 @@
 import paho.mqtt.client as mqtt
 from Sensors.radiationSensor import RadiationSensor
-from Sensors.temperature import TemperatureSensor
+from Sensors.temperatureSensor import TemperatureSensor
 from Sensors.pressureSensor import PressureSensor
 from Sensors.flowRateSensor import FlowRateSensor
 from Sensors.waterChemistrySensor import WaterChemistrySensor
@@ -32,7 +32,7 @@ flowRate = FlowRateSensor('flowRate', 'F1', broker_address)
 waterChemistry = WaterChemistrySensor('waterChemistry', 'W1', broker_address)
 
 radiation.stream()
-temperature.stream()
-pressure.stream()
-flowRate.stream()
-waterChemistry.stream()
+# temperature.stream()
+# pressure.stream()
+# flowRate.stream()
+# waterChemistry.stream()
