@@ -1,0 +1,9 @@
+from(bucket: "radiation")
+  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)
+  |> filter(fn: (r) =>
+    r._measurement == "Becquerel" and
+    r._field == "value"
+  )
+
+
+  
