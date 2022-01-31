@@ -1,4 +1,3 @@
-import paho.mqtt.client as mqtt
 from Sensors.radiationSensor import RadiationSensor
 from Sensors.temperatureSensor import TemperatureSensor
 from Sensors.pressureSensor import PressureSensor
@@ -16,14 +15,7 @@ def on_message(client, userdata, message):
 # client.on_message = on_message
 
 broker_address = 'localhost'
-# print(client.connect(broker_address))
-# client.loop_start() 
-# client.subscribe('house/light')
-# client.publish('house/light', 'ON')
-# import time
-# time.sleep(2)
-# client.publish('house/light', 'OFF')
-# client.loop_stop() 
+
 
 radiation = RadiationSensor('radiation', 'R1', broker_address)
 temperature = TemperatureSensor('temperature', 'T1', broker_address)
@@ -32,7 +24,7 @@ flowRate = FlowRateSensor('flowRate', 'F1', broker_address)
 waterChemistry = WaterChemistrySensor('waterChemistry', 'W1', broker_address)
 
 radiation.stream()
-# temperature.stream()
-# pressure.stream()
-# flowRate.stream()
-# waterChemistry.stream()
+temperature.stream()
+pressure.stream()
+flowRate.stream()
+waterChemistry.stream()
