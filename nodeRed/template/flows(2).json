@@ -27,8 +27,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 580,
-        "y": 380,
+        "x": 600,
+        "y": 260,
         "wires": [
             [
                 "9263fabc9311fa84"
@@ -48,8 +48,8 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 310,
-        "y": 380,
+        "x": 330,
+        "y": 280,
         "wires": [
             [
                 "5667710564a13f9e",
@@ -67,7 +67,7 @@
         "width": 0,
         "height": 0,
         "gtype": "gage",
-        "title": "R1/Gauge",
+        "title": "Radiation",
         "label": "Becquerel",
         "format": "{{value}}",
         "min": "50",
@@ -80,8 +80,8 @@
         "seg1": "",
         "seg2": "",
         "className": "",
-        "x": 830,
-        "y": 380,
+        "x": 860,
+        "y": 260,
         "wires": []
     },
     {
@@ -96,10 +96,10 @@
         "database": "radiation",
         "precisionV18FluxV20": "ms",
         "retentionPolicyV18Flux": "",
-        "org": "1",
+        "org": "h",
         "bucket": "radiation",
-        "x": 840,
-        "y": 540,
+        "x": 860,
+        "y": 400,
         "wires": []
     },
     {
@@ -115,8 +115,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 830,
-        "y": 660,
+        "x": 850,
+        "y": 500,
         "wires": []
     },
     {
@@ -131,19 +131,147 @@
         "finalize": "",
         "libs": [],
         "x": 580,
-        "y": 500,
+        "y": 400,
         "wires": [
             [
                 "106998151a27a2d9",
-                "4ba95e8ba4128388"
+                "4ba95e8ba4128388",
+                "291daf0d92342dc2",
+                "ec764342799efaba"
             ]
+        ]
+    },
+    {
+        "id": "23d19dcf3cbfb4ba",
+        "type": "e-mail",
+        "z": "f6f2187d.f17ca8",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "secure": true,
+        "tls": true,
+        "name": "kcccryptoball@gmail.com",
+        "dname": "",
+        "x": 1190,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "291daf0d92342dc2",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "High radiation alert",
+        "func": "\nif(msg.payload.radiation > 150)\n{\n    msg.topic = \"Subject: System radiation has been exceeded\";\n    msg.payload = \"Radiation:\" + String(msg.payload.radiation);\n    return msg\n}\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 600,
+        "wires": [
+            [
+                "23d19dcf3cbfb4ba"
+            ]
+        ]
+    },
+    {
+        "id": "8d398a25d625b5bf",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "temperature/T1",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "bced5e52960f97b7",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 280,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2ced7ea14e1ff245",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "pressure/P1",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "bced5e52960f97b7",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 270,
+        "y": 680,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9d0971c003ea4914",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "flowRate/F1",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "bced5e52960f97b7",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 270,
+        "y": 780,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "371d49652e52efc2",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "waterChemistry/W1",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "bced5e52960f97b7",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 290,
+        "y": 860,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ec764342799efaba",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "email_builder",
+        "func": "// Code added here will be run once\n// whenever the node is started.\nvar temp=msg.payload;\nmsg.to=\"kcccryptoball@gmail.com\";\nmsg.from=\"chanmickyyun@gmail.com\";\n\nvar d = new Date();\nvar message = \"hello world\";\nmsg.topic = \"Temperature hello\";\nmsg.payload = \"Time: \" + d + message + msg.payload;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\nvar temp=msg.payload;\nmsg.to=\"kcccryptoball@gmail.com\";\nmsg.from=\"chanmickyyun@gmail.com\";\n\nvar d = new Date();\nvar message = \"hello world\";\nmsg.topic = \"Temperature hello\";\nmsg.payload = \"Time: \" + d + message + msg.payload;\nreturn msg;",
+        "finalize": "// Code added here will be run when the\n// node is being stopped or re-deployed.\nmsg.payload = Number(msg.payload)\nreturn msg;",
+        "libs": [],
+        "x": 830,
+        "y": 720,
+        "wires": [
+            []
         ]
     },
     {
         "id": "bced5e52960f97b7",
         "type": "mqtt-broker",
         "name": "",
-        "broker": "172.17.0.4",
+        "broker": "172.17.0.3",
         "port": "1883",
         "clientid": "",
         "autoConnect": true,
@@ -187,7 +315,7 @@
         "usetls": false,
         "tls": "",
         "influxdbVersion": "2.0",
-        "url": "http://172.17.0.5:8086",
+        "url": "http://172.17.0.4:8086",
         "rejectUnauthorized": false
     },
     {
