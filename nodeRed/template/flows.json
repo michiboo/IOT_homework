@@ -163,7 +163,7 @@
         "type": "function",
         "z": "a85d1d668cd9bcf6",
         "name": "email_builder",
-        "func": "// Code added here will be run once\n// whenever the node is started.\nvar temp=msg.payload;\nmsg.to=\"essietom@gmail.com\";\nmsg.from=\"royal.tomi.eu@gmail.com\";\n\nvar d = new Date();\nvar message = \"hello world\";\nmsg.topic = \"Temperature hello\";\nmsg.payload = \"Time: \" + d + message + msg.payload;\nreturn msg;",
+        "func": "// Code added here will be run once\n// whenever the node is started.\nvar temp=msg.payload;\nmsg.to=\"adenekanesther13@gmail.com\";\nmsg.from=\"royal.tomi.eu@gmail.com\";\n\nvar d = new Date();\nvar message = \"hello world\";\nmsg.topic = \"Temperature hello\";\nmsg.payload = \"Time: \" + d + message + msg.payload;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "// Code added here will be run once\n// whenever the node is started.\nvar temp=msg.payload;\nmsg.to=\"essietom@gmail.com\";\nmsg.from=\"royal.tomi.eu@gmail.com\";\n\nvar d = new Date();\nvar message = \"hello world\";\nmsg.topic = \"Temperature hello\";\nmsg.payload = \"Time: \" + d + message + msg.payload;\nreturn msg;",
@@ -810,6 +810,20 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "b65940880aab6d68",
+        "type": "e-mail",
+        "z": "a85d1d668cd9bcf6",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "secure": true,
+        "tls": true,
+        "name": "adenekanesther13@gmail.com",
+        "dname": "Power plant",
+        "x": 1090,
+        "y": 420,
+        "wires": []
     },
     {
         "id": "0448a9d144c26a9e",
