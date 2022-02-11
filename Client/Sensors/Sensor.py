@@ -1,6 +1,7 @@
 import random 
 import paho.mqtt.client as mqtt
 
+
 import time
 class Sensor():
     def __init__(self, topic, clientId, broker_address, broker_port='1883'):
@@ -20,7 +21,7 @@ class Sensor():
         print("message retain flag=",message.retain)
 
     def on_disconnect(self, client, userdata,rc=0):
-        logging.debug("DisConnected result code "+str(rc))
+        # logging.debug("DisConnected result code "+str(rc))
         self.client.loop_stop()
     
     def dataGeneration(self):
