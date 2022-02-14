@@ -8,5 +8,5 @@ class PressureSensor(Sensor):
     # pascal measure pressure activity
     # 100psi == safe
     def dataGeneration(self):
-        time.sleep(0.5)
+        time.sleep(1)
         return random.uniform(0, 2000)

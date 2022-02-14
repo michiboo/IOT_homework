@@ -8,5 +8,5 @@ class WaterChemistrySensor(Sensor):
     # ph measure raditiaon activity
     # ph of 6-7 == safe
     def dataGeneration(self):
-        time.sleep(0.5)
-        return random.uniform(1, 10)
+        time.sleep(1)
+        return random.uniform(1, 14)

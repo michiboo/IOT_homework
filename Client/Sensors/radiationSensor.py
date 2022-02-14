@@ -8,5 +8,5 @@ class RadiationSensor(Sensor):
     # Becquerel measure raditiaon activity
     #148 becquerels per cubic meter == safe
     def dataGeneration(self):
-        time.sleep(0.5)
-        return random.uniform(100, 200)
+        time.sleep(1)
+        return random.uniform(50, 300)

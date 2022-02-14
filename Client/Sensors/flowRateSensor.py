@@ -8,5 +8,5 @@ class FlowRateSensor(Sensor):
     # cm/s measure pressure activity
     # 100cm/s == safe
     def dataGeneration(self):
-        time.sleep(0.5)
+        time.sleep(1)
         return random.uniform(50, 2000)

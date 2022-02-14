@@ -62,7 +62,7 @@
         "type": "ui_gauge",
         "z": "a85d1d668cd9bcf6",
         "name": "",
-        "group": "fad7ac7d160e9492",
+        "group": "086e694b39f60fc0",
         "order": 0,
         "width": 0,
         "height": 0,
@@ -80,8 +80,8 @@
         "seg1": "",
         "seg2": "",
         "className": "",
-        "x": 860,
-        "y": 260,
+        "x": 900,
+        "y": 180,
         "wires": []
     },
     {
@@ -137,7 +137,8 @@
                 "6012d43694287ccf",
                 "6780cf5c26e58df3",
                 "55278ea505f7f001",
-                "e0d7a1e02b7c1e89"
+                "e0d7a1e02b7c1e89",
+                "5a1507343d0b130e"
             ]
         ]
     },
@@ -146,7 +147,7 @@
         "type": "function",
         "z": "a85d1d668cd9bcf6",
         "name": "High radiation alert",
-        "func": "\nif(msg.payload.radiation > 150)\n{\n    msg.topic = \"Subject: System radiation has been exceeded\";\n    msg.payload = \"Radiation:\" + String(msg.payload.radiation);\n    return msg\n}\nreturn msg",
+        "func": "\nif(msg.payload.radiation > 280)\n{\n    msg.topic = \"Subject: System radiation has been exceeded\";\n    msg.payload = \"Radiation:\" + String(msg.payload.radiation);\n    return msg\n}\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -163,7 +164,7 @@
         "type": "function",
         "z": "a85d1d668cd9bcf6",
         "name": "email_builder",
-        "func": "// Code added here will be run once\n// whenever the node is started.\nvar temp=msg.payload;\nmsg.to=\"adenekanesther13@gmail.com\";\nmsg.from=\"royal.tomi.eu@gmail.com\";\n\nvar d = new Date();\nvar message = \"hello world\";\nmsg.topic = \"Temperature hello\";\nmsg.payload = \"Time: \" + d + message + msg.payload;\nreturn msg;",
+        "func": "// Code added here will be run once\n// whenever the node is started.\nvar temp=msg.payload;\nmsg.to=\"abdulqadirahmed.abbasi@student.univaq.it\";\nmsg.from=\"royal.tomi.eu@gmail.com\";\n\nvar d = new Date();\nvar message = \"hello world\";\nmsg.topic = \"Temperature hello\";\nmsg.payload = \"Time: \" + d + message + msg.payload;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "// Code added here will be run once\n// whenever the node is started.\nvar temp=msg.payload;\nmsg.to=\"essietom@gmail.com\";\nmsg.from=\"royal.tomi.eu@gmail.com\";\n\nvar d = new Date();\nvar message = \"hello world\";\nmsg.topic = \"Temperature hello\";\nmsg.payload = \"Time: \" + d + message + msg.payload;\nreturn msg;",
@@ -221,7 +222,7 @@
         "type": "ui_gauge",
         "z": "a85d1d668cd9bcf6",
         "name": "",
-        "group": "fad7ac7d160e9492",
+        "group": "924c886a3ab32d43",
         "order": 0,
         "width": 0,
         "height": 0,
@@ -257,8 +258,8 @@
         "retentionPolicyV18Flux": "",
         "org": "h",
         "bucket": "flowrate",
-        "x": 840,
-        "y": 600,
+        "x": 880,
+        "y": 640,
         "wires": []
     },
     {
@@ -274,8 +275,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 850,
-        "y": 640,
+        "x": 890,
+        "y": 700,
         "wires": []
     },
     {
@@ -296,7 +297,8 @@
                 "9ec4f6dddd0067bf",
                 "c03fcdf31fa0b942",
                 "744225fd01d26e01",
-                "aa6f94dcac992f1f"
+                "aa6f94dcac992f1f",
+                "0f4d3f4acee3bc6b"
             ]
         ]
     },
@@ -305,14 +307,14 @@
         "type": "function",
         "z": "a85d1d668cd9bcf6",
         "name": "Abnormal flowrate alert",
-        "func": "\nif(msg.payload.flowrate < 50)\n{\n    msg.topic = \"Subject: Flow rate has dropped below normal level\";\n    msg.payload = \"Flowrate:\" + String(msg.payload.flowrate);\n    return msg\n}\nelse if(msg.payload.flowrate > 600){\n    msg.topic = \"Subject: Flow rate has risen above normal level\";\n    msg.payload = \"Flowrate:\" + String(msg.payload.flowrate);\n    return msg\n}\n\nreturn msg",
+        "func": "\nif(msg.payload.flowrate < 50)\n{\n    msg.topic = \"Subject: Flow rate has dropped below normal level\";\n    msg.payload = \"Flowrate:\" + String(msg.payload.flowrate);\n    return msg\n}\nelse if(msg.payload.flowrate > 1700){\n    msg.topic = \"Subject: Flow rate has risen above normal level\";\n    msg.payload = \"Flowrate:\" + String(msg.payload.flowrate);\n    return msg\n}\n\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
         "x": 910,
-        "y": 700,
+        "y": 740,
         "wires": [
             []
         ]
@@ -380,7 +382,7 @@
         "type": "ui_gauge",
         "z": "a85d1d668cd9bcf6",
         "name": "",
-        "group": "fad7ac7d160e9492",
+        "group": "cb30bafe819560b6",
         "order": 0,
         "width": 0,
         "height": 0,
@@ -416,8 +418,8 @@
         "retentionPolicyV18Flux": "",
         "org": "h",
         "bucket": "pressure",
-        "x": 820,
-        "y": 880,
+        "x": 860,
+        "y": 940,
         "wires": []
     },
     {
@@ -433,8 +435,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 830,
-        "y": 920,
+        "x": 890,
+        "y": 980,
         "wires": []
     },
     {
@@ -455,7 +457,8 @@
                 "8d6c36140c2638ee",
                 "717f5ab222516296",
                 "7bd2643e10fc74df",
-                "0727ea9caf64fa42"
+                "0727ea9caf64fa42",
+                "c7f247dfd7b45d58"
             ]
         ]
     },
@@ -464,14 +467,14 @@
         "type": "function",
         "z": "a85d1d668cd9bcf6",
         "name": "High pressure alert",
-        "func": "\nif(msg.payload.pressure > 150)\n{\n    msg.topic = \"Subject: Pressure is too high\";\n    msg.payload = \"Pressure:\" + String(msg.payload.pressure);\n    return msg\n}\nreturn msg",
+        "func": "\nif(msg.payload.pressure > 1900)\n{\n    msg.topic = \"Subject: Pressure is too high\";\n    msg.payload = \"Pressure:\" + String(msg.payload.pressure);\n    return msg\n}\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 870,
-        "y": 980,
+        "x": 890,
+        "y": 1020,
         "wires": [
             []
         ]
@@ -548,11 +551,11 @@
         "label": "ph value",
         "format": "{{value}}",
         "min": "1",
-        "max": "10",
+        "max": "14",
         "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
+            "#95b300",
+            "#148a2b",
+            "#3a5ecb"
         ],
         "seg1": "",
         "seg2": "",
@@ -575,8 +578,8 @@
         "retentionPolicyV18Flux": "",
         "org": "h",
         "bucket": "waterchemistry",
-        "x": 860,
-        "y": 1160,
+        "x": 880,
+        "y": 1220,
         "wires": []
     },
     {
@@ -592,8 +595,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 850,
-        "y": 1200,
+        "x": 870,
+        "y": 1260,
         "wires": []
     },
     {
@@ -614,7 +617,8 @@
                 "fc174b8f530b55a0",
                 "d4a5a3391a6fb331",
                 "f0c3bbd49c6d2cc8",
-                "9a262077e76da21f"
+                "9a262077e76da21f",
+                "43a22f1425051199"
             ]
         ]
     },
@@ -629,8 +633,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 890,
-        "y": 1260,
+        "x": 910,
+        "y": 1300,
         "wires": [
             []
         ]
@@ -698,7 +702,7 @@
         "type": "ui_gauge",
         "z": "a85d1d668cd9bcf6",
         "name": "",
-        "group": "fad7ac7d160e9492",
+        "group": "bfebccc6a3bb29b3",
         "order": 0,
         "width": 0,
         "height": 0,
@@ -735,7 +739,7 @@
         "org": "h",
         "bucket": "temperature",
         "x": 850,
-        "y": 1460,
+        "y": 1500,
         "wires": []
     },
     {
@@ -752,7 +756,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 850,
-        "y": 1500,
+        "y": 1540,
         "wires": []
     },
     {
@@ -773,7 +777,8 @@
                 "4413011b467cb56d",
                 "491e2783ac94f5ed",
                 "8a757bef5c45c3a6",
-                "beb6f1a136db8083"
+                "beb6f1a136db8083",
+                "6f466c8bfaf9707f"
             ]
         ]
     },
@@ -782,14 +787,14 @@
         "type": "function",
         "z": "a85d1d668cd9bcf6",
         "name": "High temperature alert",
-        "func": "\nif(msg.payload.temperature > 50)\n{\n    msg.topic = \"Subject: System temperature has been exceeded\";\n    msg.payload = \"Temperature:\" + String(msg.payload.temperature);\n    return msg\n}\nreturn msg",
+        "func": "\nif(msg.payload.temperature > 90)\n{\n    msg.topic = \"Subject: System temperature has been exceeded\";\n    msg.payload = \"Temperature:\" + String(msg.payload.temperature);\n    return msg\n}\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
         "x": 900,
-        "y": 1560,
+        "y": 1600,
         "wires": [
             []
         ]
@@ -819,11 +824,231 @@
         "port": "465",
         "secure": true,
         "tls": true,
-        "name": "adenekanesther13@gmail.com",
+        "name": "abdulqadirahmed.abbasi@student.univaq.it",
         "dname": "Power plant",
         "x": 1090,
         "y": 420,
         "wires": []
+    },
+    {
+        "id": "0f4d3f4acee3bc6b",
+        "type": "ui_chart",
+        "z": "a85d1d668cd9bcf6",
+        "name": "",
+        "group": "924c886a3ab32d43",
+        "order": 1,
+        "width": "0",
+        "height": "0",
+        "label": "Flow rate Chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "50",
+        "ymax": "2000",
+        "removeOlder": "5",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 940,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c7f247dfd7b45d58",
+        "type": "ui_chart",
+        "z": "a85d1d668cd9bcf6",
+        "name": "",
+        "group": "cb30bafe819560b6",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Pressure Chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "2000",
+        "removeOlder": "5",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 880,
+        "y": 900,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "43a22f1425051199",
+        "type": "ui_chart",
+        "z": "a85d1d668cd9bcf6",
+        "name": "",
+        "group": "fad7ac7d160e9492",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Water Chemistry Chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "1",
+        "ymax": "10",
+        "removeOlder": "5",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 940,
+        "y": 1180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6f466c8bfaf9707f",
+        "type": "ui_chart",
+        "z": "a85d1d668cd9bcf6",
+        "name": "",
+        "group": "bfebccc6a3bb29b3",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Temperature Chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": "5",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 890,
+        "y": 1460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5a1507343d0b130e",
+        "type": "ui_chart",
+        "z": "a85d1d668cd9bcf6",
+        "name": "",
+        "group": "086e694b39f60fc0",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Radiation Chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "30",
+        "ymax": "300",
+        "removeOlder": "5",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 930,
+        "y": 240,
+        "wires": [
+            []
+        ]
     },
     {
         "id": "0448a9d144c26a9e",
@@ -852,9 +1077,9 @@
         "sessionExpiry": ""
     },
     {
-        "id": "fad7ac7d160e9492",
+        "id": "086e694b39f60fc0",
         "type": "ui_group",
-        "name": "area",
+        "name": "Radiation",
         "tab": "a3aa9708baa5f099",
         "order": 1,
         "disp": true,
@@ -903,9 +1128,53 @@
         "sessionExpiry": ""
     },
     {
+        "id": "924c886a3ab32d43",
+        "type": "ui_group",
+        "name": "Flow Rate",
+        "tab": "a3aa9708baa5f099",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "cb30bafe819560b6",
+        "type": "ui_group",
+        "name": "Pressure",
+        "tab": "a3aa9708baa5f099",
+        "order": 4,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "fad7ac7d160e9492",
+        "type": "ui_group",
+        "name": "Water Chemistry",
+        "tab": "a3aa9708baa5f099",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "bfebccc6a3bb29b3",
+        "type": "ui_group",
+        "name": "Temperature",
+        "tab": "a3aa9708baa5f099",
+        "order": 5,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
         "id": "a3aa9708baa5f099",
         "type": "ui_tab",
-        "name": "Flowrate sensors",
+        "name": "Power Plant",
         "icon": "dashboard",
         "order": 1,
         "disabled": false,

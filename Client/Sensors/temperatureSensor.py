@@ -8,5 +8,5 @@ class TemperatureSensor(Sensor):
     # degrees measure temperature activity
     # 40 degrees celcius == safe
     def dataGeneration(self):
-        time.sleep(0.5)
+        time.sleep(1)
         return random.uniform(0, 100)
