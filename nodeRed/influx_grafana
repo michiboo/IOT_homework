@@ -4,6 +4,3 @@ from(bucket: "radiation")
     r._measurement == "Becquerel" and
     r._field == "value"
   )
-
-
-  

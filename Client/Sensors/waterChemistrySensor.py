@@ -4,9 +4,9 @@ import time
 
 class WaterChemistrySensor(Sensor):
     # def __init__(self, *args, **kwargs):
-    #     super(RadiationSensor, self).__init__(*args, **kwargs)
-    # Becquerel measure raditiaon activity
-    #148 becquerels per cubic meter == safe
+    #     super(WaterChemistrySensor, self).__init__(*args, **kwargs)
+    # ph measure raditiaon activity
+    # ph of 6-7 == safe
     def dataGeneration(self):
-        time.sleep(0.5)
-        return random.uniform(100, 200)
+        time.sleep(1)
+        return random.uniform(1, 14)
